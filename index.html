@@ -1,0 +1,41 @@
+<!doctype HTML>
+<html>
+<head>
+	<title> May I Call a Mobster? </title>
+
+	<link rel="shortcut icon" href="http://d29vcfpn0e63gd.cloudfront.net/sites/all/themes/mobiquity/favicon.ico" type="image/vnd.microsoft.icon">
+	<link href='//fonts.googleapis.com/css?family=Source+Serif+Pro:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="main.css" type="text/css"/>
+
+</head>
+<body>
+
+<main>
+	<h1>May I Call a Mobster?</h1>
+	<header class="office"> 
+		<div class="name">Office</div>
+		<div class="status">Availability*</div>
+		<div class="time">Local Time</div>
+	</header>
+	<div id="timeInfo"></div>
+	<footer>
+		<small>*Availability is based on 9-to-5 business hours. Of course, work schedules vary 
+		by project and by person.</small>
+	</footer>
+</main>
+
+<script id="officeTemplate" type="text/x-handlebars-template">
+	{{#each offices}}
+		<section class="office">
+			<div class="name"><span>{{name}}</span></div> 
+			<div class="status {{status}}">{{mayCall}}</div>
+			<div class="time">{{friendlyTime}}</div>
+		</section>
+	{{/each}}
+</script>
+
+<script src="handlebars.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

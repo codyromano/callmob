@@ -1,0 +1,72 @@
+main {
+	font-size: 1.25rem;
+	font-family: Arial;
+	width: 100%;
+	margin: 25px auto 50px auto;
+	text-align: center;
+	font-family: 'Source Serif Pro', serif;
+	font-weight: 400;
+}
+.office {
+	display: table-row; 
+}
+.office div {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+h1 { color: #9e2518;}
+
+small {
+	color: #555;
+	font-size: 1rem;
+}
+.office .name {
+	width: 33%;
+}
+.office .status {
+	width: 33%;
+}
+.office .time {
+	width: 33%;
+}
+.office .status.Open {
+	color: green;
+}
+.office .status.Closed {
+	color: #9e2518;
+}
+
+header.office {
+	display: table;
+	font-weight: 700; 
+}
+.office:after {
+	content: '';
+	display: block;
+	padding-bottom: 4rem;
+}
+header.office div {
+	display: table-cell;
+	text-align: center;
+}
+
+#timeInfo, header.office {
+	width: 90%;
+	max-width: 700px;
+	margin: 0px auto;
+}
+
+#timeInfo {
+	display: table;
+}
+footer {
+	padding-top: 1.5rem;
+}
+footer small {
+	width: 90%;
+	max-width: 30rem;
+	display: block;
+	margin: 0 auto;
+}
