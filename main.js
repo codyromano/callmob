@@ -53,15 +53,21 @@
 	(function getTimeInfo () {
 		var offices = [
 			new Office('Dallas', -6),
-			new Office('Wayne', -5),
+			new Office('Philadelphia', -5),
+			new Office('Providence', -4),
 			new Office('New York', -4), 
 			new Office('Wellesley', -4),
+			new Office('Waltham', -4),
 			new Office('Gainesville', -4),
 			new Office('San Francisco', -7),
+			new Office('San Jose', -6),
 			new Office('Amsterdam', 2),
-			new Office('Ahmedabad', 5.5)
+			new Office('Ahmedabad', 5.5),
+			new Office('Atlanta', -4)
 		].sort(function (a, b) {
-			return a.name > b.name; 
+			  var textA = a.name.toUpperCase();
+    		  var textB = b.name.toUpperCase();
+    		  return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
 		});
 
 		updateDisplay(offices);
