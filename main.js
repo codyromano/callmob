@@ -17,7 +17,8 @@
 		return int < 10 ? '0' + int : int; 
 	}
 
-	function Office (name, utcOffset) {
+	function Office (name, utcOffset, regularHours) {
+		var regularHours = regularHours || [9,17];
 		var _self = this; 
 		this.name = name; 
 
@@ -29,7 +30,7 @@
 
 		this.hours = this.dateObj.getHours();
 		this.minutes = this.dateObj.getMinutes(); 
-		this.open = this.hours >=9 && this.hours < 17; 
+		this.open = this.hours >=regularHours[0] && this.hours < regularHours[1]; 
 
 		this.status = this.open ? 'Open' : 'Closed'; 
 		this.mayCall = this.open ? 'Yes' : 'Use Discretion';
@@ -62,7 +63,7 @@
 			new Office('San Francisco', -7),
 			new Office('San Jose', -6),
 			new Office('Amsterdam', 2),
-			new Office('Ahmedabad', 5.5),
+			new Office('Ahmedabad', 5.5, [10,19]),
 			new Office('Atlanta', -4)
 		].sort(function (a, b) {
 			  var textA = a.name.toUpperCase();
