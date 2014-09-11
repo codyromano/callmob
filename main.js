@@ -32,8 +32,30 @@
 		this.minutes = this.dateObj.getMinutes(); 
 		this.open = this.hours >=regularHours[0] && this.hours < regularHours[1]; 
 
-		this.status = this.open ? 'Open' : 'Closed'; 
-		this.mayCall = this.open ? 'Yes' : 'Use Discretion';
+		this.status = (function() {
+			if ((this.hours >= 7 && this.hours < regularHours[0]) || (this.hours > regularHours[1] && this.hours <= 22)) {
+				return 'Discretion';
+			} else {
+				if (this.open) {
+					return 'Open';
+				} else {
+					return 'Closed';
+				}
+			}
+		});
+		
+		this.mayCall = (function() {
+			
+			if (this.open) {
+				return 'Yes';
+			} else {
+				if (this.hours < 7 || this.hours > 22) {
+					return "No Way!";
+				} else {
+					return "Use Discretion";
+				}
+			}
+		});
 
 		this.friendlyTime = (function () {
 			var hours, minutes, seconds, ampm; 
@@ -52,19 +74,25 @@
 	}
 
 	(function getTimeInfo () {
+		
+		var GMT = 0;
+		var EDT = GMT - 4;
+		var CDT = GMT - 5;
+		var PDT = GMT - 7;
+		
 		var offices = [
-			new Office('Dallas', -6),
-			new Office('Philadelphia', -5),
-			new Office('Providence', -4),
-			new Office('New York', -4), 
-			new Office('Wellesley', -4),
-			new Office('Waltham', -4),
-			new Office('Gainesville', -4),
-			new Office('San Francisco', -7),
-			new Office('San Jose', -6),
-			new Office('Amsterdam', 2),
-			new Office('Ahmedabad', 5.5, [10,19]),
-			new Office('Atlanta', -4)
+			new Office('Dallas', CDT),
+			new Office('Philadelphia', EDT),
+			new Office('Providence', EDT),
+			new Office('New York', EDT), 
+			new Office('Wellesley', EDT),
+			new Office('Waltham', EDT),
+			new Office('Gainesville', EDT),
+			new Office('San Francisco', PDT),
+			new Office('San Jose', PDT),
+			new Office('Amsterdam', GMT + 2),
+			new Office('Ahmedabad', GMT + 5.5, [10,19]),
+			new Office('Atlanta', EDT)
 		].sort(function (a, b) {
 			  var textA = a.name.toUpperCase();
     		  var textB = b.name.toUpperCase();

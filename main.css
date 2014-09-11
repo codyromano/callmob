@@ -40,6 +40,9 @@ small {
 .office .status.Closed {
 	color: #9e2518;
 }
+.office .status.Discretion {
+	color: #EE4000;
+}
 
 header.office {
 	display: table;
